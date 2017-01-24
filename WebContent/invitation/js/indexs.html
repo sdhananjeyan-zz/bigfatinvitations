@@ -1,0 +1,17 @@
+<html>
+<head>
+<script src="jquery-1.7.min.js"></script>
+<script src="jquery.countdown.min.js"></script>
+</head>
+<body>
+<div id="getting-started"></div>
+<script type="text/javascript">
+  $("#getting-started")
+  .countdown("2018/01/01", function(event) {
+    $(this).text(
+      event.strftime('%D days %H:%M:%S')
+    );
+  });
+</script>
+</body>
+</html>
