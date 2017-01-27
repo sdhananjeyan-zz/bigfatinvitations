@@ -5,6 +5,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import com.bigfatinvitations.pojo.Message;
+import com.bigfatinvitations.pojo.MessageViki;
 
 public class FactoryGenerator
 {
@@ -20,6 +21,7 @@ public class FactoryGenerator
         Configuration configuration = new Configuration();
 
         configuration.addAnnotatedClass(Message.class);
+        configuration.addAnnotatedClass(MessageViki.class);
         configuration.configure();
         return configuration.buildSessionFactory(
                 new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry());

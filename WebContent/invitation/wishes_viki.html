@@ -1,0 +1,138 @@
+<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/grid_24.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/slider.css">
+<script src="js/jquery-1.7.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script>
+        var app = angular.module("myApp", []);
+
+        app.controller("myCtrl", function($scope,$http,$interval) {
+                $scope.message = {'name':'', 'subject':'', 'message':''};
+                $scope.wishes = [];
+
+                $http.get('/bigfatinvitations/messages/load_viki.action').then(function(response){
+                        $scope.wishes = response.data.wishes;
+                });
+
+                $scope.refresh = function(){
+                        $http.get('/bigfatinvitations/messages/load_viki.action').then(function(response){
+                                $scope.wishes = response.data.wishes;
+                        });
+                };
+
+                $interval($scope.refresh,5000);
+
+                $scope.postMessage = function(){
+                        if($scope.message.name==''||$scope.message.subject==''||$scope.message.message==''){
+                                alert('please fill all the fields');
+                                return;
+                        }
+                        $http.post('/bigfatinvitations/messages/add_viki.action',{'message':$scope.message}).then(function(response){
+                                $scope.refresh();
+                                $scope.message.name='';
+                                $scope.message.subject='';
+                                $scope.message.message='';
+                        });
+                };
+        });
+</script>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+<![endif]-->
+<title>Vignesh&amp;Anbarasi</title>
+</head>
+<body>
+<div class="sub-pages">
+  <header>
+    <h1><a href="index_viki.html"><img src="images_viki/logo.png" alt=""></a></h1>
+    <nav>
+      <ul class="menu">
+        <li><a href="index_viki.html">about</a></li>
+        <li><a href="album_viki.html">album</a></li>
+        <li class="current"><a href="wishes_viki.html">your wishes</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<!--==============================content================================-->
+<section id="content">
+   <div class="grid_24" style="margin-top:20px;" ng-app="myApp" ng-controller="myCtrl">
+    <h4><strong>Your</strong> wishes:</h4>
+    <div style="width:80%;background:#e1e1e1;border-radius: 8px;border: 2px solid #937bb8;color:#937bb8">  
+    <form ng-submit="postMessage">
+    <br>
+		     <div style="float:left;width:45%;padding:5px">
+		     	<div style="float:left;width:20%">
+		     		Name:
+		     	</div>
+		     	<div style="float:left;width:80%"> 
+		     		<input type="text" style="width:80%;height:20px;" ng-model="message.name" name="name">
+				</div>
+			</div>
+			<div style="float:left;width:45%;padding:5px">
+				 <div style="float:left;width:20%">
+		     		Subject:
+		     	</div>
+		     	<div style="float:left;width:80%"> 
+		     		<input type="text" style="width:80%;height:20px;" ng-model="message.subject" name="subject">
+				</div>
+			</div>
+			<div style="float:left;width:90%;padding:5px">
+		     	<div style="float:left;width:10%">
+		     		Message: 
+		     	</div>
+		     	<div style="float:left;width:90%"> 
+		     		<textarea ng-model="message.message" name="messag" style="width:100%;height:60px;"></textarea>
+				</div>
+			</div>
+			<div style="float:left;width:90%;padding:5px">
+		     	<button ng-click="postMessage()" style="padding:5px;width:80px;height:35px;margin-left:50px;border-radius:2px;background:#937bb8;font-family: 'Great Vibes', cursive;font-size: 20px;">Wish</button>
+			</div>
+      </form>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			
+    </div>
+  	<div class="container_24">
+      <div class="top-1">
+		<div class="box-4sp wrap" ng-repeat="wishes4 in wishes">
+         	<div class="fleft" ng-repeat="wish in wishes4">
+            <div class="box-1">
+              <div class="extra-wrap">
+                <p class="text-1">{{wish.name}}</p>
+                <p class="text-2">said:</p>
+              </div>
+            </div>
+            <div class="comments-4">
+              <div class="comments-corner"></div>
+              <div class="comment-1">
+                <div class="comment-2">
+                  <p class="text-4"><strong class="clr-1">{{wish.subject}}&nbsp;&nbsp;&nbsp;</strong>{{wish.message}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+         </div>
+         <br>
+      </div>
+    </div>
+  </div>
+ </section>
+
+<!--==============================footer=================================-->
+<footer> 
+    <a target="_blank" href="https://www.facebook.com/SakthivelDhanajeyan" class="link"><div style="padding: 0px;font-family: 'Great Vibes', cursive;font-size:18px;color:black;font-weight:normal;"> Website by Sakthi...</div></a>
+</footer>
+</body>
+</html>

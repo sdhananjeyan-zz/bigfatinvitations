@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Vignesh&amp;Anbarasi</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/grid_24.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/slider.css">
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+<script src="js/jquery-1.7.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/tms-0.4.1.js"></script>
+<link rel="stylesheet" href="css/flipclock.css">
+<script src="js/flipclock.min.js"></script>
+<script>
+$(document).ready(function(){           
+  $('.slider')._TMS({
+    show:0,
+    pauseOnHover:true,
+    prevBu:'.prev',
+    nextBu:'.next',
+    playBu:false,
+    duration:800,
+    preset:'fade',
+    pagination:'.pags',
+    pagNums:false,
+    slideshow:7000,
+    numStatus:false,
+    banners:false,
+    waitBannerAnimation:false,
+    progressBar:false
+  })    
+});
+</script>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+<![endif]-->
+</head>
+<body>
+<header>
+  <h1><a href="index_viki.html"><img src="images_viki/logo.png" alt=""></a></h1>
+  <nav>
+    <ul class="menu">
+      <li class="current"><a href="index_viki.html">about</a></li>
+      <li><a href="album_viki.html">album</a></li>
+      <li><a href="wishes_viki.html">your wishes</a></li>
+    </ul>
+  </nav>
+</header>
+<div id="slide">
+  <div class="slider">
+    <ul class="items">
+      <li><img src="images_viki/slide-1.jpg" alt=""></li>
+      <li><img src="images_viki/slide-2.jpg" alt=""></li>
+      <li><img src="images_viki/slide-3.jpg" alt=""></li>
+      <li><img src="images_viki/slide-4.jpg" alt=""></li>
+    </ul>
+  </div>
+  <ul class="pags">
+    <li><a href="#"><img src="images_viki/slide-1-small.jpg" alt=""><span></span></a></li>
+    <li><a href="#"><img src="images_viki/slide-2-small.jpg" alt=""><span></span></a></li>
+    <li><a href="#"><img src="images_viki/slide-3-small.jpg" alt=""><span></span></a></li>
+    <li><a href="#"><img src="images_viki/slide-4-small.jpg" alt=""><span></span></a></li>
+  </ul>
+  <a href="#" class="prev">&nbsp;</a><a href="#" class="next">&nbsp;</a> </div>
+<!--==============================content================================-->
+<section id="content">
+  <div class="container_24">
+    <div class="grid_7">
+      <div class="top-1 right-1">
+        <h2 class="h2-border">Love <span>story:</span></h2>
+<br>
+<p class="p1 top-2">Perusa solrathukku onnum illa... 25 varushama suthiyum oru ponnayum correct panna mudiyama kadasila, enakku epdiyachum oru ponna pathu kalyanam panni veinganu veetla poi surrender ahna oru kaviya kadhalanin kadhal, inime than kadhal start eh aga pothu so ipothakki solrathukku onnum illa. aana epdiyo puliyangomba pudichitan</p>
+    </div>
+    </div>
+    <div class="grid_1">
+      <div class="line-2">&nbsp;</div>
+    </div>
+    <div class="grid_8">
+      <div class="top-1 right-1">
+        <h3><strong>About</strong> Viknesh</h3>
+        <div class="box-1"> <img src="images_viki/page1-img1.jpg" alt="" class="img-border img-indent">
+          <div class="extra-wrap">
+            <p class="text-1">Vignesh viki</p>
+            <p class="text-2">27 years old<br>
+          </div>
+        </div>
+        <p class="text-3 top-4">Karaikal Payan</p>
+        <p class="p-border">Good boy from karaikal, Working for ONGC. Pacha mannu soothu vathu theriyatha pulla. Born in Thalatheru, Brought up in Kotucherry (Servite) , Became a boss in T.R Pattinam, After Roaming all over karaikal finally settled in Neravy. Going to become Thirukadayur Mappilai </p>
+        </div>
+    </div>
+    <div class="grid_1">
+      <div class="line-2">&nbsp;</div>
+    </div>
+    <div class="grid_7">
+      <div class="top-1">
+        <h3><strong>About</strong> Anbarasi</h3>
+        <div class="box-1"> <img src="images_viki/page1-img2.jpg" alt="" class="img-border img-indent">
+          <div class="extra-wrap">
+            <p class="text-1">Anbhu</p>
+            <p class="text-2">25 years old<br>
+          </div>
+        </div>
+        <p class="text-3 top-4">Thirukadayur Ponnu</p>
+        <p class="p-border">Vignesh ku pudichi pona ore ponnu. inime thalatheru ponnu</p>
+        </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</section>
+<section id="content">
+  <div class="container_24">
+  <br>
+        <div class="clock" style="padding-left:150px;align:center;margin:2em;"></div>
+        <div class="message"></div>
+        <script type="text/javascript">
+          var clock;
+          $(document).ready(function() {
+            var clock;
+            clock = $('.clock').FlipClock({
+              clockFace: 'DailyCounter',
+              autoStart: false,
+              callbacks: {
+                stop: function() {
+                  $('.message').html('The clock has stopped!')
+                }
+              }
+            });
+            clock.setTime(Math.abs(new Date(2017, 0,30 , 7, 30, 0, 0) - $.now())/1000);
+            clock.setCountdown(true);
+            clock.start();
+          });
+        </script>
+    </div>
+
+
+  <div class="container_24">
+    <div class="grid_7">
+      <div class="top-1 right-1">
+        <h4 class="h4-border">Welcome</h4>
+        <div class="p-border">
+          <div class="comments-2">
+            <div class="comments-corner"></div>
+            <div class="comment-1">
+              <div class="comment-2">
+                <p><i>Welcome to the event of two lovely families going to become one. Welcome to the place of only Joy and Happiness. Welcome to see our thousands of well wishers with smiles amd tears of happiness. Welcome to see our stupid friends busy with selfies. Welcome to be a part of our Big Day...!</i></p>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="comments-2-name text-1">Vignesh &amp; Anbhu</div>
+        </div>
+        </div>
+    </div>
+    <div class="grid_1">
+      <div class="line-3">&nbsp;</div>
+    </div>
+    <div class="grid_15">
+      <div class="top-1">
+        <h3><strong>Wedding</strong> ceremony:</h3>
+        <div class="wrap p-border">
+          <div class="box-2"> <img src="images_viki/page2-img1.jpg" alt="" class="img-border">
+            <p class="text-3 top-4">Venue at Thirukkadayur</p>
+            <p class="top-5">Amritaghateswarar-Abirami Temple <br> Thirukkadaiyur </p>
+          </div>
+          <div class="box-2"> <img src="images_viki/page2-img2.jpg" alt="" class="img-border">
+            <p class="text-3 top-4">The Time that Going to be Our's. With presents of Your's</p>
+            <p class="top-5">துர்முகி - தை 17 காலை 6:00 <br>JAN 30 2017, 6:00 to 7:30 AM</p>
+          </div>
+          <div class="box-2 last"> <img src="images_viki/page2-img3.jpg" alt="" class="img-border">
+            <p class="text-3 top-4">Yet another Photoshoot in the Name of Reception</p>
+            <p class="top-5">Party starts at Feb 9th 6.30 pm onwards</p>
+            <p class="top-5">JBSM Thirumana Mahal <br> Keezhakasakudi<br>Karaikal</p>
+          </div>
+        </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</section>
+<!--==============================footer=================================-->
+<footer> 
+    <a target="_blank" href="https://www.facebook.com/SakthivelDhanajeyan" class="link"><div style="padding: 0px;font-family: 'Great Vibes', cursive;font-size:18px;color:black;font-weight:normal;"> Website by Sakthi...</div></a>
+</footer>
+</body>
+</html>

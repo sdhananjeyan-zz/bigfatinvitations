@@ -12,32 +12,37 @@
 <script src="js/jquery.easing.1.3.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script>
+	var app = angular.module("myApp", []);
 
-var app = angular.module("myApp", []);
+	app.controller("myCtrl", function($scope,$http,$interval) {
+    		$scope.message = {'name':'', 'subject':'', 'message':''};
+    		$scope.wishes = [];
+    		
+		$http.get('/bigfatinvitations/messages/load.action').then(function(response){
+    			$scope.wishes = response.data.wishes;
+    		});
 
-app.controller("myCtrl", function($scope,$http,$interval) {
-    $scope.message = {};
-    $scope.wishes = [];
-    $http.get('/bigfatinvitations/messages/load.action').then(function(response){
-    	$scope.wishes = response.data.wishes;
-    });
+    		$scope.refresh = function(){
+        		$http.get('/bigfatinvitations/messages/load.action').then(function(response){
+        			$scope.wishes = response.data.wishes;
+      			});      
+    		};
 
-    $scope.refresh = function(){
-        $http.get('/bigfatinvitations/messages/load.action').then(function(response){
-        $scope.wishes = response.data.wishes;
-      });      
-    };
+    		$interval($scope.refresh,5000);
 
-    $interval($scope.refresh,2000);
-
-    $scope.postMessage = function(){
-      $http.post('/bigfatinvitations/messages/add.action',{'message':$scope.message}).then(function(response){
-          $scope.refresh();
-      });
-    };
-
-});
-
+    		$scope.postMessage = function(){
+    			if($scope.message.name==''||$scope.message.subject==''||$scope.message.message==''){
+    				alert('please fill all the fields');
+    				return;
+    			}
+      			$http.post('/bigfatinvitations/messages/add.action',{'message':$scope.message}).then(function(response){
+          			$scope.refresh();
+          			$scope.message.name='';
+          			$scope.message.subject='';
+          			$scope.message.message='';
+      			});
+    		};
+	});
 </script>
 <!--[if lt IE 9]>
 <script src="js/html5.js"></script>
@@ -86,6 +91,7 @@ app.controller("myCtrl", function($scope,$http,$interval) {
 		     		Message: 
 		     	</div>
 		     	<div style="float:left;width:90%"> 
+            <span style="color:red">note:</span>no smileys please... 
 		     		<textarea ng-model="message.message" name="messag" style="width:100%;height:60px;"></textarea>
 				</div>
 			</div>

@@ -11,7 +11,12 @@
 		<action name="sandhyakarthik">
 			<result>/invitation/index.html</result>
 		</action>
+		<action name="vigneshanbhu">
+			<result>/invitation/index_viki.html</result>
+		</action>
 	</package>
+	
+	
 
 	<package name="message" namespace="/messages" extends="json-default">
 	
@@ -28,5 +33,18 @@
 				</interceptor-ref>
 			<result type="json"/>
 		</action>
+		
+		<action name="load_viki" class="com.bigfatinvitations.messages.viki.actions.Load">
+			<result type="json"/>
+		</action>
+		<action name="add_viki" class="com.bigfatinvitations.messages.viki.actions.Add">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="json">
+	    			<param name="enableSMD">true</param>
+				</interceptor-ref>
+			<result type="json"/>
+		</action>
 	</package>
+	
+	
 </struts>
